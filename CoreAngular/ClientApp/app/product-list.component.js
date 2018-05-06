@@ -14,13 +14,19 @@ var ProductListComponent = /** @class */ (function () {
         this.dataService = dataService;
     }
     ProductListComponent.prototype.ngOnInit = function () {
+        this.load();
+    };
+    ProductListComponent.prototype.load = function () {
         var _this = this;
         this.dataService.getProducts().subscribe(function (data) { return _this.products = data; });
     };
+    ProductListComponent.prototype.delete = function (id) {
+        var _this = this;
+        this.dataService.deleteProduct(id).subscribe(function (data) { return _this.load(); });
+    };
     ProductListComponent = __decorate([
         Component({
-            templateUrl: './product-list.component.html',
-            providers: [DataService]
+            templateUrl: './product-list.component.html'
         }),
         __metadata("design:paramtypes", [DataService])
     ], ProductListComponent);

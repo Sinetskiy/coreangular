@@ -11,12 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list.component';
-import { ProductDetailComponent } from './product-detail.component';
+import { ProductFormComponent } from './product-form.component';
+import { ProductCreateComponent } from './product-create.component';
+import { ProductEditComponent } from './product-edit.component';
+import { NotFoundComponent } from './not-found.component';
+import { DataService } from './data.service';
 // определение маршрутов
 var appRoutes = [
     { path: '', component: ProductListComponent },
-    { path: 'product/:id', component: ProductDetailComponent },
-    { path: '**', redirectTo: '/' }
+    { path: 'create', component: ProductCreateComponent },
+    { path: 'edit/:id', component: ProductEditComponent },
+    { path: '**', component: NotFoundComponent }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -24,7 +29,9 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         NgModule({
             imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
-            declarations: [AppComponent, ProductListComponent, ProductDetailComponent],
+            declarations: [AppComponent, ProductListComponent, ProductCreateComponent, ProductEditComponent,
+                ProductFormComponent, NotFoundComponent],
+            providers: [DataService],
             bootstrap: [AppComponent]
         })
     ], AppModule);

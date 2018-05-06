@@ -38,22 +38,14 @@ namespace CoreAngular
 
             //app.UseDefaultFiles(); - этот метод теперь не нужен
             app.UseStaticFiles();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapSpaFallbackRoute("angular-fallback",
-                    new { controller = "Home", action = "Index" });
-            });
+            app.UseMvc();
 
             // обработка маршрутов, которые не сопоставлены с ресурсам ранее
-            //app.Run(async (context) =>
-            //{
-            //    context.Response.ContentType = "text/html";
-            //    await context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
-            //});
+            app.Run(async (context) =>
+            {
+                context.Response.ContentType = "text/html";
+                await context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
+            });
         }
     }
 }
