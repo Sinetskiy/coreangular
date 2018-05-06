@@ -14,12 +14,12 @@ export class ProductDetailComponent implements OnInit {
     loaded: boolean = false;
 
     constructor(private dataService: DataService, activeRoute: ActivatedRoute) {
-     //   this.id = Number.parseInt(activeRoute.snapshot.params["id"]);
+        this.id = Number.parseInt(activeRoute.snapshot.params["id"]);
     }
 
     ngOnInit() {
-        //if (this.id)
-        //    this.dataService.getProduct(this.id)
-        //        .subscribe((data: Product) => { this.product = data; this.loaded = true; });
+        if (this.id)
+            this.dataService.getProduct(this.id)
+                .subscribe((data: Product) => { this.product = data; this.loaded = true; });
     }
 }

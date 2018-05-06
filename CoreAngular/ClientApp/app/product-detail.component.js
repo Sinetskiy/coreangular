@@ -14,12 +14,13 @@ var ProductDetailComponent = /** @class */ (function () {
     function ProductDetailComponent(dataService, activeRoute) {
         this.dataService = dataService;
         this.loaded = false;
-        //   this.id = Number.parseInt(activeRoute.snapshot.params["id"]);
+        this.id = Number.parseInt(activeRoute.snapshot.params["id"]);
     }
     ProductDetailComponent.prototype.ngOnInit = function () {
-        //if (this.id)
-        //    this.dataService.getProduct(this.id)
-        //        .subscribe((data: Product) => { this.product = data; this.loaded = true; });
+        var _this = this;
+        if (this.id)
+            this.dataService.getProduct(this.id)
+                .subscribe(function (data) { _this.product = data; _this.loaded = true; });
     };
     ProductDetailComponent = __decorate([
         Component({
