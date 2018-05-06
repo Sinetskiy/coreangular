@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\app.component.ts" />
+    <None Remove="ClientApp\app\app.component.ts" />
+    <None Remove="ClientApp\app\app.module.ts" />
+    <None Remove="ClientApp\app\data.service.ts" />
+    <None Remove="ClientApp\app\main.ts" />
+    <None Remove="ClientApp\app\product-detail.component.ts" />
+    <None Remove="ClientApp\app\product-list.component.ts" />
+    <None Remove="ClientApp\app\product.ts" />
+    <None Remove="ClientApp\polyfills.ts" />
+    <None Remove="webpack.config.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\app.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\app.component1.ts" />
+    <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\data.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\product-detail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\product-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\product.ts" />
+    <TypeScriptCompile Include="ClientApp\main.ts" />
+    <TypeScriptCompile Include="ClientApp\polyfills.ts" />
+    <TypeScriptCompile Include="webpack.config.js" />
+  </ItemGroup>
+
+</Project>

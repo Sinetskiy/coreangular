@@ -1,0 +1,4 @@
+CoreAngular/node_modules/**/*
+CoreAngular/bin/**/*
+CoreAngular/obj/**/*
+.vs/**/*
