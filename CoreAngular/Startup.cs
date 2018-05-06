@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using CoreAngular.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoreAngular
@@ -34,9 +36,24 @@ namespace CoreAngular
                 });
             }
 
-            app.UseDefaultFiles();
+            //app.UseDefaultFiles(); - этот метод теперь не нужен
             app.UseStaticFiles();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapSpaFallbackRoute("angular-fallback",
+                    new { controller = "Home", action = "Index" });
+            });
+
+            // обработка маршрутов, которые не сопоставлены с ресурсам ранее
+            //app.Run(async (context) =>
+            //{
+            //    context.Response.ContentType = "text/html";
+            //    await context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
+            //});
         }
     }
 }
